@@ -1,174 +1,216 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Github, ExternalLink, Filter } from 'lucide-react';
+import { ExternalLink, Github, Star, Layers } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = ({ projects }) => {
-  const [filteredProjects, setFilteredProjects] = useState(projects);
-  const [selectedTag, setSelectedTag] = useState('all');
-  const [allTags, setAllTags] = useState(['all']);
-  const projectsRef = useRef(null);
-  const cardsRef = useRef([]);
+    const sectionRef = useRef(null);
+    const [activeFilter, setActiveFilter] = useState('all');
 
-  useEffect(() => {
-    if (projects && projects.length > 0) {
-      const tags = ['all'];
-      projects.forEach(project => {
-        if (project.tags) {
-          project.tags.forEach(tag => {
-            if (!tags.includes(tag)) tags.push(tag);
-          });
-        }
-      });
-      setAllTags(tags);
-      setFilteredProjects(projects);
-    }
-  }, [projects]);
+    const allTags = ['all', ...new Set(projects.flatMap((p) => p.tags))];
 
-  useEffect(() => {
-    if (selectedTag === 'all') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(projects.filter(p => p.tags && p.tags.includes(selectedTag)));
-    }
-  }, [selectedTag, projects]);
+    const filteredProjects = activeFilter === 'all' ? projects : projects.filter((p) => p.tags.includes(activeFilter));
 
-  useEffect(() => {
-    if (cardsRef.current.length > 0) {
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.from(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: 'top bottom-=100',
-              toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: 'power3.out'
-          });
-        }
-      });
-    }
-  }, [filteredProjects]);
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                '.projects-header',
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, scrollTrigger: { trigger: '.projects-header', start: 'top 85%' } }
+            );
 
-  if (!projects || projects.length === 0) {
+            gsap.utils.toArray('.project-card').forEach((card, i) => {
+                gsap.fromTo(
+                    card,
+                    { y: 60, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.1,
+                        ease: 'power3.out',
+                        scrollTrigger: { trigger: card, start: 'top 90%' },
+                    }
+                );
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, [activeFilter]);
+
     return (
-      <div className="min-h-screen flex items-center justify-center" data-testid="projects-empty">
-        <p className="text-gray-500 text-lg">No projects to display yet.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div 
-      ref={projectsRef}
-      className="min-h-screen py-20 px-6"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%)' }}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-4" data-testid="projects-heading">
-            Featured Projects
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A showcase of my recent work and passion projects
-          </p>
-        </div>
-
-        {/* Filter tags */}
-        {allTags.length > 1 && (
-          <div className="flex flex-wrap gap-3 justify-center mb-12" data-testid="projects-filters">
-            {allTags.map(tag => (
-              <button
-                key={tag}
-                onClick={() => setSelectedTag(tag)}
-                className={`tag ${
-                  selectedTag === tag ? 'bg-blue-500/30 border-blue-400' : ''
-                }`}
-                data-testid={`filter-tag-${tag}`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              ref={el => cardsRef.current[index] = el}
-              className="card group cursor-pointer"
-              data-testid={`project-card-${project.id}`}
-            >
-              {project.image_url && (
-                <div className="relative overflow-hidden rounded-lg mb-4 h-48">
-                  <img 
-                    src={project.image_url} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    data-testid={`project-image-${project.id}`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <section id="projects" ref={sectionRef} className="section">
+            <div className="section-inner">
+                <div className="section-header projects-header">
+                    <h2>
+                        Featured <span className="gradient-text">Projects</span>
+                    </h2>
+                    <p>Products and platforms I've architected from zero to production.</p>
                 </div>
-              )}
 
-              <h3 className="text-xl font-semibold text-white mb-2" data-testid={`project-title-${project.id}`}>
-                {project.title}
-              </h3>
-              <p className="text-gray-400 text-sm mb-4" data-testid={`project-description-${project.id}`}>
-                {project.description}
-              </p>
-
-              {project.tech_stack && project.tech_stack.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4" data-testid={`project-tech-${project.id}`}>
-                  {project.tech_stack.slice(0, 4).map((tech, i) => (
-                    <span 
-                      key={i}
-                      className="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                {/* Filter Tags */}
+                <div
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 8,
+                        justifyContent: 'center',
+                        marginBottom: 48,
+                    }}
+                >
+                    {allTags.map((tag) => (
+                        <button
+                            key={tag}
+                            className={`tag ${activeFilter === tag ? 'active' : ''}`}
+                            onClick={() => setActiveFilter(tag)}
+                        >
+                            {tag === 'all' ? 'All Projects' : tag.charAt(0).toUpperCase() + tag.slice(1)}
+                        </button>
+                    ))}
                 </div>
-              )}
 
-              <div className="flex gap-3 mt-4">
-                {project.github_url && (
-                  <a
-                    href={project.github_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
-                    data-testid={`project-github-${project.id}`}
-                  >
-                    <Github size={20} />
-                  </a>
-                )}
-                {project.live_url && (
-                  <a
-                    href={project.live_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
-                    data-testid={`project-live-${project.id}`}
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                )}
-              </div>
+                {/* Project Grid */}
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(350, 1fr))',
+                        gap: 24,
+                    }}
+                    className="project-grid"
+                >
+                    {filteredProjects.map((project) => (
+                        <div key={project.id} className="card project-card" style={{ cursor: 'default' }}>
+                            {/* Featured Badge */}
+                            {project.featured && (
+                                <div
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: 6,
+                                        padding: '4px 12px',
+                                        background: 'rgba(245, 158, 11, 0.1)',
+                                        border: '1px solid rgba(245, 158, 11, 0.25)',
+                                        borderRadius: 9999,
+                                        fontSize: 12,
+                                        fontWeight: 600,
+                                        color: '#f59e0b',
+                                        marginBottom: 16,
+                                    }}
+                                >
+                                    <Star size={12} />
+                                    Featured
+                                </div>
+                            )}
+
+                            <h3
+                                style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: 700,
+                                    fontFamily: "'Space Grotesk', sans-serif",
+                                    marginBottom: 10,
+                                    lineHeight: 1.3,
+                                }}
+                            >
+                                {project.title}
+                            </h3>
+
+                            <p
+                                style={{
+                                    fontSize: 14,
+                                    color: 'var(--text-secondary)',
+                                    lineHeight: 1.7,
+                                    marginBottom: 16,
+                                }}
+                            >
+                                {project.description}
+                            </p>
+
+                            {/* Long description */}
+                            {project.long_description && (
+                                <p
+                                    style={{
+                                        fontSize: 13,
+                                        color: 'var(--text-muted)',
+                                        lineHeight: 1.6,
+                                        marginBottom: 20,
+                                        borderLeft: '2px solid var(--accent-blue)',
+                                        paddingLeft: 12,
+                                    }}
+                                >
+                                    {project.long_description}
+                                </p>
+                            )}
+
+                            {/* Tech Stack */}
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
+                                {project.tech_stack.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: 4,
+                                            padding: '4px 12px',
+                                            fontSize: 12,
+                                            fontWeight: 500,
+                                            background: 'rgba(59,130,246,0.08)',
+                                            color: 'var(--accent-blue)',
+                                            borderRadius: 9999,
+                                            border: '1px solid rgba(59,130,246,0.15)',
+                                        }}
+                                    >
+                                        <Layers size={10} />
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Links */}
+                            <div style={{ display: 'flex', gap: 12, marginTop: 'auto' }}>
+                                {project.github_url && (
+                                    <a
+                                        href={project.github_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-outline"
+                                        style={{ padding: '8px 20px', fontSize: 13 }}
+                                    >
+                                        <Github size={16} />
+                                        Code
+                                    </a>
+                                )}
+                                {project.live_url && (
+                                    <a
+                                        href={project.live_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-primary"
+                                        style={{ padding: '8px 20px', fontSize: 13 }}
+                                    >
+                                        <ExternalLink size={16} />
+                                        Live
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+
+            <style>{`
+        .project-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+          gap: 24px;
+        }
+        @media (max-width: 768px) {
+          .project-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
+        </section>
+    );
 };
 
 export default Projects;

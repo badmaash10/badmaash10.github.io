@@ -1,0 +1,47 @@
+ Charchit Singh Sahay  
+ 
+Ghaziabad, Uttar Pradesh, India                           charhitsingh10@gmail.com                           8766216568                             LinkedIn 
+Technical Lead architecting scalable microservices and multi-tenant SaaS platforms from the ground up. Expert in high-performance API design, cloud integration, and driving technical strategy from MVP to scale at pace.
+
+SKILLS  
+          
+
+  
+EXPERIENCE  
+Associate Python developer | Matrica Solutions Pvt. Ltd.                                                                                   Sep 2024 – Present, New Delhi, India  
+
+Project 1: Enterprise ERP & Client Service Platform (OMS)
+Greenfield Architecture: Architected and built a modular Order Management System from scratch, designing it with a flexible structure that scaled into a Multi-Tenant ERP Platform without technical debt.
+Rapid Market Adoption (Zero-to-One): Transformed internal capabilities into a commercial SaaS product, achieving immediate market fit with 2 active enterprise clients and 2 contracts in final negotiation within the first month of launch.
+Client-Side API Ecosystem: Deployed high-performance RESTful APIs within the OMS for E-Stamping and Aadhaar-based E-Sign. Optimized endpoints to handle sub-second latency for heavy PDF payloads (up to 1MB), enabling real-time service delivery.
+Microservices Implementation: Decoupled resource-intensive tasks by engineering an independent OCR Microservice on a separate VPS. Orchestrated secure communication between the core ERP and OCR service to automate vendor document processing.
+Infrastructure & Storage: Implemented a distributed storage strategy using Amazon S3 for secure retention of legal documents, ensuring high availability across the multi-server architecture.
+Project 2: PrintSolv Software (Vendor Automation SaaS)
+B2B Product Development: Developed PrintSolv, a secure automation service for vendors, driving a 30% increase in company revenue through higher service throughput.
+Operational Efficiency: Engineered automation pipelines that reduced order completion time by over 70%, accelerating turnaround for high-volume vendor tasks.
+Iterative Innovation: Enforced continuous product improvement loops based on vendor feedback, refining system logic and usability to meet evolving business needs.
+Project 3: TheLegalPrint.com (Product Strategy & UX)
+Product Oversight & UX Design: Directed the User Experience (UX) strategy for the public-facing platform, providing critical architectural inputs and design governance to the    m     development team.
+Optimization: Redesigned the user journey to ensure a frictionless checkout flow and clean UI, directly aligning the digital product with business goals for individual user acquisition.
+Technical Leadership & Brand Strategy
+Corporate Digital Presence: Led the lifecycle of the company’s interactive website (matrica.in), aligning technical deployment with business goals to enhance brand credibility.
+Team Leadership: Mentoring 2 engineering interns by establishing code standards, reviewing pull requests, and managing daily sprint tasks.
+Client Solutions: Acting as the technical authority in client sales meetings to translate technical capabilities into business value.
+Business Analyst Trainee |  Planet Spark                                                                                                               May 2024 - August 2024, Gurugram, Haryana, India   
+ 
+Data Pipeline & Analysis: Processed large-scale datasets (1M+ users) using Python and SQL to engineer customer segmentation models, directly optimizing sales targeting strategies.
+Visualization & Reporting: Developed automated dashboards to track critical KPIs and churn metrics, providing actionable insights that improved sales team efficiency.   
+   
+PROJECTS  
+What To Do AI – Next-Gen Career Co-Pilot | React 19, TypeScript, Python (Fast API), Google Gemini 2.5
+Real-Time Voice Coaching: Integrated Gemini 2.5 Native Audio (Web Sockets) to enable low-latency, conversational mock interviews, significantly improving user confidence and readiness.
+ATS Optimization Engine: Engineered a resume tailoring agent using Gemini Pro that identifies skill gaps and rewrites content, maximizing application success rates for job seekers.
+Interactive UX: Built a high-performance SPA with React 19 & Vite, transforming static career planning into dynamic, visual roadmaps that increase user engagement.
+
+Agri-Tech Project | Product Design, Fundraising, Social Innovation 						   H.B.T.U. Kanpur/ 2023 - 2024                      
+End-to-End Engineering: Led the design, fabrication, and testing of a low-cost automated plantation tool, optimizing crop processes to increase affordability for small-scale farmers.
+Validation & Funding: Secured ₹55,000 in seed funding and achieved institutional affiliation from CSA Agriculture University, validating the project's technical feasibility and social impact.
+
+EDUCATION  
+Bachelor of Technology – Mechanical Engineering | Harcourt Butler Technical University (HBTI, KANPUR) - 2024  	     	  	
+

@@ -1,0 +1,200 @@
+// ============================================================
+// Portfolio Data — Edit this file to update your website content
+// ============================================================
+
+export const profile = {
+    name: "Charchit Singh Sahay",
+    title: "Technical Lead & Full Stack Developer",
+    bio: "Technical Lead architecting scalable microservices and multi-tenant SaaS platforms from the ground up. Expert in high-performance API design, cloud integration, and driving technical strategy from MVP to scale at pace.",
+    email: "charhitsingh10@gmail.com",
+    phone: "8766216568",
+    location: "Ghaziabad, Uttar Pradesh, India",
+    avatar_url: null,
+    resume_url: null,
+    github: "https://github.com/badmaash10",
+    linkedin: "https://linkedin.com/in/charchit-singh-sahay",
+    twitter: null,
+    website: "https://badmaash10.github.io",
+    skills: [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "HTML/CSS",
+        "MongoDB",
+        "PostgreSQL",
+        "Microservices",
+        "RESTful APIs",
+        "Multi-tenant Systems",
+        "System Design",
+        "AWS S3",
+        "Git",
+        "Linux",
+        "Docker",
+        "Postman",
+        "Agile",
+        "CI/CD",
+        "React",
+        "FastAPI",
+        "Power BI",
+    ],
+};
+
+export const projects = [
+    {
+        id: "what-to-do-ai",
+        title: "What To Do AI – Next-Gen Career Co-Pilot",
+        description:
+            "An AI-powered career guidance platform with real-time voice coaching, ATS resume optimization, and interactive visual roadmaps.",
+        long_description:
+            "Real-Time Voice Coaching using Gemini 2.5 Native Audio with WebSockets for low-latency conversational mock interviews. ATS Optimization Engine that identifies skill gaps and rewrites resume content. High-performance SPA with React 19 & Vite transforming static career planning into dynamic, visual roadmaps.",
+        tech_stack: [
+            "React 19",
+            "TypeScript",
+            "Python",
+            "FastAPI",
+            "Google Gemini 2.5",
+            "Vite",
+            "WebSockets",
+        ],
+        tags: ["ai", "fullstack", "saas", "career-tech"],
+        github_url: null,
+        live_url: null,
+        image_url: null,
+        featured: true,
+        status: "published",
+    },
+    {
+        id: "enterprise-erp-oms",
+        title: "Enterprise ERP & Client Service Platform (OMS)",
+        description:
+            "A modular Order Management System architected from scratch, scaled into a Multi-Tenant ERP Platform with 2 active enterprise clients.",
+        long_description:
+            "Greenfield architecture designed with a flexible structure that scaled without technical debt. Deployed high-performance RESTful APIs for E-Stamping and Aadhaar-based E-Sign with sub-second latency. Engineered an independent OCR Microservice on a separate VPS with secure inter-service communication. Implemented distributed storage with Amazon S3 for legal documents.",
+        tech_stack: [
+            "Python",
+            "FastAPI",
+            "Microservices",
+            "AWS S3",
+            "OCR",
+            "MongoDB",
+        ],
+        tags: ["enterprise", "saas", "microservices", "erp"],
+        github_url: null,
+        live_url: null,
+        image_url: null,
+        featured: true,
+        status: "published",
+    },
+    {
+        id: "printsolv",
+        title: "PrintSolv – Vendor Automation SaaS",
+        description:
+            "A secure B2B automation service for vendors that drove a 30% increase in company revenue and reduced order completion time by over 70%.",
+        long_description:
+            "Developed PrintSolv as a B2B product driving higher service throughput. Engineered automation pipelines that accelerated turnaround for high-volume vendor tasks. Enforced continuous product improvement loops based on vendor feedback.",
+        tech_stack: ["Python", "FastAPI", "Automation", "B2B SaaS"],
+        tags: ["saas", "automation", "b2b"],
+        github_url: null,
+        live_url: null,
+        image_url: null,
+        featured: false,
+        status: "published",
+    },
+    {
+        id: "thelegalprint",
+        title: "TheLegalPrint.com – Product Strategy & UX",
+        description:
+            "Directed UX strategy for a public-facing legal services platform, redesigning the user journey for frictionless checkout and clean UI.",
+        long_description:
+            "Provided critical architectural inputs and design governance to the development team. Redesigned the user journey to ensure a frictionless checkout flow, aligning the digital product with business goals for individual user acquisition.",
+        tech_stack: ["UX Design", "Product Strategy", "Web Development"],
+        tags: ["ux", "product", "web"],
+        github_url: null,
+        live_url: "https://thelegalprint.com",
+        image_url: null,
+        featured: false,
+        status: "published",
+    },
+    {
+        id: "agri-tech",
+        title: "Agri-Tech Automated Plantation Tool",
+        description:
+            "Led the design, fabrication, and testing of a low-cost automated plantation tool for small-scale farmers. Secured ₹55,000 in seed funding.",
+        long_description:
+            "End-to-end engineering of a low-cost automated plantation tool, optimizing crop processes to increase affordability for small-scale farmers. Achieved institutional affiliation from CSA Agriculture University, validating technical feasibility and social impact.",
+        tech_stack: [
+            "Product Design",
+            "Fabrication",
+            "IoT",
+            "Social Innovation",
+        ],
+        tags: ["hardware", "social-innovation", "agri-tech"],
+        github_url: null,
+        live_url: null,
+        image_url: null,
+        featured: false,
+        status: "published",
+    },
+];
+
+export const experiences = [
+    {
+        id: "matrica-solutions",
+        title: "Associate Python Developer",
+        company: "Matrica Solutions Pvt. Ltd.",
+        type: "job",
+        description:
+            "Architecting scalable microservices and multi-tenant SaaS platforms. Leading technical strategy across multiple enterprise products including ERP, vendor automation, and public-facing platforms. Mentoring engineering interns and acting as technical authority in client engagements.",
+        responsibilities: [
+            "Architected modular Order Management System from scratch, scaling into Multi-Tenant ERP",
+            "Deployed high-performance RESTful APIs with sub-second latency for heavy PDF payloads",
+            "Engineered independent OCR Microservice on separate VPS",
+            "Implemented distributed storage with Amazon S3",
+            "Developed PrintSolv vendor automation SaaS driving 30% revenue increase",
+            "Directed UX strategy for TheLegalPrint.com",
+            "Led company website lifecycle (matrica.in)",
+            "Mentoring 2 engineering interns with code reviews and sprint management",
+        ],
+        skills: [
+            "Python",
+            "FastAPI",
+            "Microservices",
+            "AWS S3",
+            "MongoDB",
+            "System Design",
+            "Docker",
+        ],
+        start_date: "Sep 2024",
+        end_date: null,
+        current: true,
+        logo_url: null,
+        status: "published",
+    },
+    {
+        id: "planet-spark",
+        title: "Business Analyst Trainee",
+        company: "Planet Spark",
+        type: "internship",
+        description:
+            "Processed large-scale datasets (1M+ users) using Python and SQL to engineer customer segmentation models. Developed automated dashboards for tracking critical KPIs and churn metrics.",
+        responsibilities: [
+            "Processed large-scale datasets (1M+ users) for customer segmentation",
+            "Engineered sales targeting strategies using Python and SQL",
+            "Developed automated dashboards tracking KPIs and churn metrics",
+            "Provided actionable insights improving sales team efficiency",
+        ],
+        skills: [
+            "Python",
+            "SQL",
+            "Data Analysis",
+            "Power BI",
+            "Excel",
+            "Customer Segmentation",
+        ],
+        start_date: "May 2024",
+        end_date: "Aug 2024",
+        current: false,
+        logo_url: null,
+        status: "published",
+    },
+];

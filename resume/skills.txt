@@ -1,0 +1,4 @@
+['Languages & Databases', 'Python, JavaScript/TypeScript, HTML/CSS, MongoDB, PostgreSQL (Supabase)']
+['Architecture & Backend', 'Microservices, RESTful APIs, Multi-tenant Systems, System Design, AWS S3']
+['Tools & Methods', 'Microsoft Excel, Power BI, Mongo DB Compass, Git, Linux, Docker, Postman, Agile, CI/CD']
+['Soft Skills', 'Technical Leadership, Client Strategy, Communication, Collaboration, Problem Solving, Innovation']

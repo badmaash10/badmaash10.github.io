@@ -1,19 +1,23 @@
 import React from 'react';
-import '@/App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from '@/pages/Home';
-import Admin from '@/pages/Admin';
+import './App.css';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import About from './components/About';
+import Contact from './components/Contact';
+import { profile, projects, experiences } from './data/portfolioData';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="noise-overlay" />
+      <Navbar />
+      <Hero profile={profile} />
+      <Experience experiences={experiences} />
+      <Projects projects={projects} />
+      <About profile={profile} />
+      <Contact profile={profile} />
     </div>
   );
 }

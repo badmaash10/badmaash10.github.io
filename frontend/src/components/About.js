@@ -1,183 +1,218 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download } from 'lucide-react';
+import { Code2, Database, Cloud, Terminal, Wrench, Brain } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const skillCategories = [
+    {
+        icon: <Code2 size={20} />,
+        title: 'Languages',
+        skills: ['Python', 'JavaScript', 'TypeScript', 'HTML/CSS'],
+        color: '#3b82f6',
+    },
+    {
+        icon: <Database size={20} />,
+        title: 'Databases',
+        skills: ['MongoDB', 'PostgreSQL'],
+        color: '#8b5cf6',
+    },
+    {
+        icon: <Cloud size={20} />,
+        title: 'Architecture',
+        skills: ['Microservices', 'RESTful APIs', 'Multi-tenant Systems', 'System Design'],
+        color: '#06b6d4',
+    },
+    {
+        icon: <Terminal size={20} />,
+        title: 'Frameworks',
+        skills: ['React', 'FastAPI', 'Vite'],
+        color: '#10b981',
+    },
+    {
+        icon: <Wrench size={20} />,
+        title: 'DevOps & Tools',
+        skills: ['Docker', 'Git', 'Linux', 'AWS S3', 'CI/CD', 'Postman'],
+        color: '#f59e0b',
+    },
+    {
+        icon: <Brain size={20} />,
+        title: 'Soft Skills',
+        skills: ['Technical Leadership', 'Client Strategy', 'Agile', 'Problem Solving'],
+        color: '#ec4899',
+    },
+];
+
 const About = ({ profile }) => {
-  const aboutRef = useRef(null);
-  const contentRef = useRef(null);
-  const skillsRef = useRef(null);
+    const sectionRef = useRef(null);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      gsap.from(contentRef.current, {
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top bottom-=100',
-          toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: 'power3.out'
-      });
-    }
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                '.about-header',
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, scrollTrigger: { trigger: '.about-header', start: 'top 85%' } }
+            );
 
-    if (skillsRef.current) {
-      const skills = skillsRef.current.children;
-      gsap.from(skills, {
-        scrollTrigger: {
-          trigger: skillsRef.current,
-          start: 'top bottom-=100',
-          toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power3.out'
-      });
-    }
-  }, [profile]);
+            gsap.utils.toArray('.skill-category-card').forEach((card, i) => {
+                gsap.fromTo(
+                    card,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.08,
+                        ease: 'power3.out',
+                        scrollTrigger: { trigger: card, start: 'top 90%' },
+                    }
+                );
+            });
 
-  if (!profile) {
+            gsap.fromTo(
+                '.about-stats',
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.7, scrollTrigger: { trigger: '.about-stats', start: 'top 85%' } }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-      <div className="min-h-screen flex items-center justify-center" data-testid="about-empty">
-        <p className="text-gray-500 text-lg">Loading about section...</p>
-      </div>
-    );
-  }
+        <section id="about" ref={sectionRef} className="section" style={{ background: 'var(--bg-secondary)' }}>
+            <div className="section-inner">
+                <div className="section-header about-header">
+                    <h2>
+                        Skills & <span className="gradient-text">Expertise</span>
+                    </h2>
+                    <p>A versatile toolkit built through real-world product engineering, not just tutorials.</p>
+                </div>
 
-  return (
-    <div 
-      ref={aboutRef}
-      className="min-h-screen py-20 px-6"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%)' }}
-      data-testid="about-section"
-    >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-4" data-testid="about-heading">
-            About Me
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Get to know me better
-          </p>
-        </div>
+                {/* Stats Bar */}
+                <div
+                    className="about-stats"
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gap: 16,
+                        marginBottom: 56,
+                    }}
+                >
+                    <StatCard number="6+" label="Months Industry Experience" color="#3b82f6" />
+                    <StatCard number="5+" label="Production Projects" color="#8b5cf6" />
+                    <StatCard number="2" label="Enterprise Clients" color="#06b6d4" />
+                    <StatCard number="30%" label="Revenue Impact" color="#10b981" />
+                </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left column - Bio */}
-          <div ref={contentRef} className="space-y-6">
-            {profile.avatar_url && (
-              <div className="relative w-full aspect-square rounded-2xl overflow-hidden" data-testid="about-avatar">
-                <img 
-                  src={profile.avatar_url} 
-                  alt={profile.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              </div>
-            )}
+                {/* Skills Grid */}
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                        gap: 20,
+                    }}
+                    className="skills-grid"
+                >
+                    {skillCategories.map((category) => (
+                        <div
+                            key={category.title}
+                            className="card skill-category-card"
+                            style={{ cursor: 'default' }}
+                        >
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 12,
+                                    marginBottom: 16,
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: 40,
+                                        height: 40,
+                                        borderRadius: 10,
+                                        background: `${category.color}15`,
+                                        border: `1px solid ${category.color}30`,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: category.color,
+                                    }}
+                                >
+                                    {category.icon}
+                                </div>
+                                <h3
+                                    style={{
+                                        fontSize: '1rem',
+                                        fontWeight: 600,
+                                        fontFamily: "'Space Grotesk', sans-serif",
+                                    }}
+                                >
+                                    {category.title}
+                                </h3>
+                            </div>
 
-            {profile.bio && (
-              <div className="card" data-testid="about-bio">
-                <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
-                  {profile.bio}
-                </p>
-              </div>
-            )}
-
-            {profile.resume_url && (
-              <a
-                href={profile.resume_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 btn-primary"
-                data-testid="about-resume-btn"
-              >
-                <Download size={20} />
-                Download Resume
-              </a>
-            )}
-          </div>
-
-          {/* Right column - Details */}
-          <div className="space-y-8">
-            <div className="card" data-testid="about-details">
-              <h3 className="text-2xl font-semibold text-white mb-6">Details</h3>
-              <div className="space-y-4">
-                {profile.email && (
-                  <div>
-                    <p className="text-gray-500 text-sm mb-1">Email</p>
-                    <p className="text-white" data-testid="about-email">{profile.email}</p>
-                  </div>
-                )}
-                {profile.phone && (
-                  <div>
-                    <p className="text-gray-500 text-sm mb-1">Phone</p>
-                    <p className="text-white" data-testid="about-phone">{profile.phone}</p>
-                  </div>
-                )}
-                {profile.location && (
-                  <div>
-                    <p className="text-gray-500 text-sm mb-1">Location</p>
-                    <p className="text-white" data-testid="about-location">{profile.location}</p>
-                  </div>
-                )}
-              </div>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                                {category.skills.map((skill) => (
+                                    <span
+                                        key={skill}
+                                        className="skill-badge"
+                                        style={{
+                                            borderColor: `${category.color}25`,
+                                            background: `${category.color}08`,
+                                        }}
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
-            {profile.skills && profile.skills.length > 0 && (
-              <div className="card" data-testid="about-skills">
-                <h3 className="text-2xl font-semibold text-white mb-6">Skills</h3>
-                <div ref={skillsRef} className="flex flex-wrap gap-3">
-                  {profile.skills.map((skill, index) => (
-                    <span 
-                      key={index}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-blue-500/30"
-                      data-testid={`skill-${index}`}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {(profile.github || profile.linkedin || profile.twitter || profile.website) && (
-              <div className="card" data-testid="about-links">
-                <h3 className="text-2xl font-semibold text-white mb-6">Connect</h3>
-                <div className="space-y-3">
-                  {profile.github && (
-                    <a href={profile.github} target="_blank" rel="noopener noreferrer" className="block text-blue-400 hover:text-blue-300 transition-colors" data-testid="about-github">
-                      GitHub →
-                    </a>
-                  )}
-                  {profile.linkedin && (
-                    <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="block text-blue-400 hover:text-blue-300 transition-colors" data-testid="about-linkedin">
-                      LinkedIn →
-                    </a>
-                  )}
-                  {profile.twitter && (
-                    <a href={profile.twitter} target="_blank" rel="noopener noreferrer" className="block text-blue-400 hover:text-blue-300 transition-colors" data-testid="about-twitter">
-                      Twitter →
-                    </a>
-                  )}
-                  {profile.website && (
-                    <a href={profile.website} target="_blank" rel="noopener noreferrer" className="block text-blue-400 hover:text-blue-300 transition-colors" data-testid="about-website">
-                      Website →
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+            <style>{`
+        @media (max-width: 768px) {
+          .skills-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+        </section>
+    );
 };
+
+const StatCard = ({ number, label, color }) => (
+    <div
+        className="card"
+        style={{
+            textAlign: 'center',
+            cursor: 'default',
+            padding: '24px 16px',
+        }}
+    >
+        <div
+            style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                fontFamily: "'Space Grotesk', sans-serif",
+                color: color,
+                marginBottom: 4,
+            }}
+        >
+            {number}
+        </div>
+        <div
+            style={{
+                fontSize: 13,
+                color: 'var(--text-secondary)',
+                fontWeight: 500,
+            }}
+        >
+            {label}
+        </div>
+    </div>
+);
 
 export default About;
