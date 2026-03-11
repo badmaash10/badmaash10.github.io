@@ -90,7 +90,7 @@ const Navbar = () => {
                         backgroundClip: 'text',
                     }}
                 >
-                    CS.
+                    CSS
                 </a>
 
                 {/* Desktop Nav Links */}
