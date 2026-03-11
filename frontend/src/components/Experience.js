@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Briefcase, GraduationCap, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,7 +47,7 @@ const Experience = ({ experiences }) => {
                 <div
                     style={{
                         position: 'relative',
-                        maxWidth: 800,
+                        maxWidth: 1200,
                         margin: '0 auto',
                     }}
                 >
@@ -82,11 +82,11 @@ const Experience = ({ experiences }) => {
                                     position: 'absolute',
                                     left: '50%',
                                     transform: 'translateX(-50%)',
-                                    width: 48,
-                                    height: 48,
+                                    width: 32,
+                                    height: 32,
                                     borderRadius: '50%',
                                     background: 'var(--bg-primary)',
-                                    border: '3px solid var(--accent-blue)',
+                                    border: '4px solid var(--accent-blue)',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
@@ -94,11 +94,15 @@ const Experience = ({ experiences }) => {
                                     boxShadow: '0 0 20px rgba(59,130,246,0.3)',
                                 }}
                             >
-                                {exp.type === 'internship' ? (
-                                    <GraduationCap size={20} style={{ color: 'var(--accent-blue)' }} />
-                                ) : (
-                                    <Briefcase size={20} style={{ color: 'var(--accent-blue)' }} />
-                                )}
+                                <div
+                                    style={{
+                                        width: 12,
+                                        height: 12,
+                                        borderRadius: '50%',
+                                        background: 'var(--accent-blue)',
+                                        animation: 'pulse-glow 2s ease-in-out infinite',
+                                    }}
+                                />
                             </div>
 
                             {/* Card */}
@@ -156,9 +160,8 @@ const Experience = ({ experiences }) => {
                                         lineHeight: 1.6,
                                         marginBottom: 16,
                                     }}
-                                >
-                                    {exp.description}
-                                </p>
+                                    dangerouslySetInnerHTML={{ __html: exp.description }}
+                                />
 
                                 {/* Key Responsibilities */}
                                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px 0' }}>
@@ -176,7 +179,7 @@ const Experience = ({ experiences }) => {
                                             }}
                                         >
                                             <ChevronRight size={14} style={{ color: 'var(--accent-blue)', flexShrink: 0, marginTop: 3 }} />
-                                            {resp}
+                                            <span dangerouslySetInnerHTML={{ __html: resp }} />
                                         </li>
                                     ))}
                                 </ul>
@@ -211,7 +214,7 @@ const Experience = ({ experiences }) => {
           .timeline-line { left: 24px !important; }
           .exp-card { justify-content: flex-end !important; }
           .exp-card .card { width: calc(100% - 60px) !important; }
-          .exp-card > div:first-child { left: 24px !important; width: 36px !important; height: 36px !important; }
+          .exp-card > div:first-child { left: 24px !important; width: 28px !important; height: 28px !important; }
         }
       `}</style>
         </section>

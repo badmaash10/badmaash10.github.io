@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ExternalLink, Github, Star, Layers } from 'lucide-react';
+import { ExternalLink, Github, Star, Layers, ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,24 +123,30 @@ const Projects = ({ projects }) => {
                                     lineHeight: 1.7,
                                     marginBottom: 16,
                                 }}
-                            >
-                                {project.description}
-                            </p>
+                                dangerouslySetInnerHTML={{ __html: project.description }}
+                            />
 
                             {/* Long description */}
-                            {project.long_description && (
-                                <p
-                                    style={{
-                                        fontSize: 13,
-                                        color: 'var(--text-muted)',
-                                        lineHeight: 1.6,
-                                        marginBottom: 20,
-                                        borderLeft: '2px solid var(--accent-blue)',
-                                        paddingLeft: 12,
-                                    }}
-                                >
-                                    {project.long_description}
-                                </p>
+                            {project.long_description && Array.isArray(project.long_description) && project.long_description.length > 0 && (
+                                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px 0' }}>
+                                    {project.long_description.map((desc, i) => (
+                                        <li
+                                            key={i}
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'flex-start',
+                                                gap: 8,
+                                                fontSize: 13,
+                                                color: 'var(--text-secondary)',
+                                                marginBottom: 8,
+                                                lineHeight: 1.5,
+                                            }}
+                                        >
+                                            <ChevronRight size={14} style={{ color: 'var(--accent-blue)', flexShrink: 0, marginTop: 3 }} />
+                                            <span dangerouslySetInnerHTML={{ __html: desc }} />
+                                        </li>
+                                    ))}
+                                </ul>
                             )}
 
                             {/* Tech Stack */}

@@ -12,7 +12,7 @@ export const profile = {
     avatar_url: null,
     resume_url: null,
     github: "https://github.com/badmaash10",
-    linkedin: "https://linkedin.com/in/charchit-singh-sahay",
+    linkedin: "https://www.linkedin.com/in/charchit-singh-sahay-369859175/",
     twitter: null,
     website: "https://badmaash10.github.io",
     skills: [
@@ -45,8 +45,11 @@ export const projects = [
         title: "What To Do AI – Next-Gen Career Co-Pilot",
         description:
             "An AI-powered career guidance platform with real-time voice coaching, ATS resume optimization, and interactive visual roadmaps.",
-        long_description:
-            "Real-Time Voice Coaching using Gemini 2.5 Native Audio with WebSockets for low-latency conversational mock interviews. ATS Optimization Engine that identifies skill gaps and rewrites resume content. High-performance SPA with React 19 & Vite transforming static career planning into dynamic, visual roadmaps.",
+        long_description: [
+            "Real-Time Voice Coaching using Gemini 2.5 Native Audio with WebSockets for low-latency conversational mock interviews.",
+            "ATS Optimization Engine that identifies skill gaps and rewrites resume content.",
+            "High-performance SPA with React 19 & Vite transforming static career planning into dynamic, visual roadmaps.",
+        ],
         tech_stack: [
             "React 19",
             "TypeScript",
@@ -58,7 +61,7 @@ export const projects = [
         ],
         tags: ["ai", "fullstack", "saas", "career-tech"],
         github_url: null,
-        live_url: null,
+        live_url: "https://what-to-do-ai-frontend-exec.vercel.app/",
         image_url: null,
         featured: true,
         status: "published",
@@ -67,9 +70,13 @@ export const projects = [
         id: "enterprise-erp-oms",
         title: "Enterprise ERP & Client Service Platform (OMS)",
         description:
-            "A modular Order Management System architected from scratch, scaled into a Multi-Tenant ERP Platform with 2 active enterprise clients.",
-        long_description:
-            "Greenfield architecture designed with a flexible structure that scaled without technical debt. Deployed high-performance RESTful APIs for E-Stamping and Aadhaar-based E-Sign with sub-second latency. Engineered an independent OCR Microservice on a separate VPS with secure inter-service communication. Implemented distributed storage with Amazon S3 for legal documents.",
+            "A modular Order Management System architected from scratch, scaled into a Multi-Tenant ERP Platform with <strong>2 active enterprise clients</strong>.",
+        long_description: [
+            "Greenfield architecture designed with a flexible structure that scaled without technical debt.",
+            "Deployed high-performance RESTful APIs for E-Stamping and Aadhaar-based E-Sign with sub-second latency.",
+            "Engineered an independent OCR Microservice on a separate VPS with secure inter-service communication.",
+            "Implemented distributed storage with Amazon S3 for legal documents.",
+        ],
         tech_stack: [
             "Python",
             "FastAPI",
@@ -80,7 +87,7 @@ export const projects = [
         ],
         tags: ["enterprise", "saas", "microservices", "erp"],
         github_url: null,
-        live_url: null,
+        live_url: "https://oms.matrica.in/",
         image_url: null,
         featured: true,
         status: "published",
@@ -89,9 +96,12 @@ export const projects = [
         id: "printsolv",
         title: "PrintSolv – Vendor Automation SaaS",
         description:
-            "A secure B2B automation service for vendors that drove a 30% increase in company revenue and reduced order completion time by over 70%.",
-        long_description:
-            "Developed PrintSolv as a B2B product driving higher service throughput. Engineered automation pipelines that accelerated turnaround for high-volume vendor tasks. Enforced continuous product improvement loops based on vendor feedback.",
+            "A secure B2B automation service for vendors that drove a <strong>30% increase</strong> in company revenue and reduced order completion time by <strong>over 70%</strong>.",
+        long_description: [
+            "Developed PrintSolv as a B2B product driving higher service throughput.",
+            "Engineered automation pipelines that accelerated turnaround for high-volume vendor tasks.",
+            "Enforced continuous product improvement loops based on vendor feedback.",
+        ],
         tech_stack: ["Python", "FastAPI", "Automation", "B2B SaaS"],
         tags: ["saas", "automation", "b2b"],
         github_url: null,
@@ -101,16 +111,18 @@ export const projects = [
         status: "published",
     },
     {
-        id: "thelegalprint",
-        title: "TheLegalPrint.com – Product Strategy & UX",
+        id: "doqcart",
+        title: "Doqcart (formerly TheLegalPrint) – Product Strategy & UX",
         description:
-            "Directed UX strategy for a public-facing legal services platform, redesigning the user journey for frictionless checkout and clean UI.",
-        long_description:
-            "Provided critical architectural inputs and design governance to the development team. Redesigned the user journey to ensure a frictionless checkout flow, aligning the digital product with business goals for individual user acquisition.",
+            "Directed UX strategy for a public-facing legal services platform (Doqcart), redesigning the user journey for frictionless checkout and clean UI.",
+        long_description: [
+            "Provided critical architectural inputs and design governance to the development team.",
+            "Redesigned the user journey to ensure a frictionless checkout flow, aligning the digital product with business goals for individual user acquisition.",
+        ],
         tech_stack: ["UX Design", "Product Strategy", "Web Development"],
         tags: ["ux", "product", "web"],
         github_url: null,
-        live_url: "https://thelegalprint.com",
+        live_url: "https://doqcart.com/uat",
         image_url: null,
         featured: false,
         status: "published",
@@ -119,9 +131,11 @@ export const projects = [
         id: "agri-tech",
         title: "Agri-Tech Automated Plantation Tool",
         description:
-            "Led the design, fabrication, and testing of a low-cost automated plantation tool for small-scale farmers. Secured ₹55,000 in seed funding.",
-        long_description:
-            "End-to-end engineering of a low-cost automated plantation tool, optimizing crop processes to increase affordability for small-scale farmers. Achieved institutional affiliation from CSA Agriculture University, validating technical feasibility and social impact.",
+            "Led the design, fabrication, and testing of a low-cost automated plantation tool for small-scale farmers. Secured <strong>₹55,000</strong> in seed funding.",
+        long_description: [
+            "End-to-end engineering of a low-cost automated plantation tool, optimizing crop processes to increase affordability for small-scale farmers.",
+            "Achieved institutional affiliation from CSA Agriculture University, validating technical feasibility and social impact.",
+        ],
         tech_stack: [
             "Product Design",
             "Fabrication",
@@ -131,6 +145,23 @@ export const projects = [
         tags: ["hardware", "social-innovation", "agri-tech"],
         github_url: null,
         live_url: null,
+        image_url: null,
+        featured: false,
+        status: "published",
+    },
+    {
+        id: "matrica-website",
+        title: "Matrica.in – Company Website",
+        description:
+            "Led the complete lifecycle and development of the official company website for Matrica Solutions.",
+        long_description: [
+            "Architected and developed the corporate website to showcase enterprise products and services.",
+            "Ensured high performance, SEO optimization, and responsive design across all devices."
+        ],
+        tech_stack: ["Web Development", "Frontend", "SEO"],
+        tags: ["web", "frontend", "company"],
+        github_url: null,
+        live_url: "https://matrica.in",
         image_url: null,
         featured: false,
         status: "published",
@@ -147,13 +178,13 @@ export const experiences = [
             "Architecting scalable microservices and multi-tenant SaaS platforms. Leading technical strategy across multiple enterprise products including ERP, vendor automation, and public-facing platforms. Mentoring engineering interns and acting as technical authority in client engagements.",
         responsibilities: [
             "Architected modular Order Management System from scratch, scaling into Multi-Tenant ERP",
-            "Deployed high-performance RESTful APIs with sub-second latency for heavy PDF payloads",
+            "Deployed high-performance RESTful APIs with <strong>sub-second latency</strong> for heavy PDF payloads",
             "Engineered independent OCR Microservice on separate VPS",
             "Implemented distributed storage with Amazon S3",
-            "Developed PrintSolv vendor automation SaaS driving 30% revenue increase",
-            "Directed UX strategy for TheLegalPrint.com",
+            "Developed PrintSolv vendor automation SaaS driving <strong>30% revenue increase</strong>",
+            "Directed UX strategy for Doqcart (formerly TheLegalPrint)",
             "Led company website lifecycle (matrica.in)",
-            "Mentoring 2 engineering interns with code reviews and sprint management",
+            "Mentoring <strong>2 engineering interns</strong> with code reviews and sprint management",
         ],
         skills: [
             "Python",
@@ -176,9 +207,9 @@ export const experiences = [
         company: "Planet Spark",
         type: "internship",
         description:
-            "Processed large-scale datasets (1M+ users) using Python and SQL to engineer customer segmentation models. Developed automated dashboards for tracking critical KPIs and churn metrics.",
+            "Processed large-scale datasets (<strong>1M+ users</strong>) using Python and SQL to engineer customer segmentation models. Developed automated dashboards for tracking critical KPIs and churn metrics.",
         responsibilities: [
-            "Processed large-scale datasets (1M+ users) for customer segmentation",
+            "Processed large-scale datasets (<strong>1M+ users</strong>) for customer segmentation",
             "Engineered sales targeting strategies using Python and SQL",
             "Developed automated dashboards tracking KPIs and churn metrics",
             "Provided actionable insights improving sales team efficiency",

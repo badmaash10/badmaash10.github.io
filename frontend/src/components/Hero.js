@@ -271,49 +271,6 @@ const Hero = ({ profile }) => {
                     )}
                 </div>
             </div>
-
-            {/* Scroll Indicator */}
-            <div
-                className="hero-scroll"
-                style={{
-                    position: 'absolute',
-                    bottom: 32,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 8,
-                    color: 'var(--text-muted)',
-                    fontSize: 12,
-                    animation: 'bounce-subtle 2s ease-in-out infinite',
-                }}
-            >
-                <span>Scroll</span>
-                <div
-                    style={{
-                        width: 24,
-                        height: 40,
-                        borderRadius: 12,
-                        border: '2px solid var(--text-muted)',
-                        position: 'relative',
-                    }}
-                >
-                    <div
-                        style={{
-                            width: 4,
-                            height: 8,
-                            borderRadius: 2,
-                            background: 'var(--accent-blue)',
-                            position: 'absolute',
-                            top: 6,
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                            animation: 'float 1.5s ease-in-out infinite',
-                        }}
-                    />
-                </div>
-            </div>
         </section>
     );
 };
