@@ -82,27 +82,56 @@ const Projects = ({ projects }) => {
                 >
                     {filteredProjects.map((project) => (
                         <div key={project.id} className="card project-card" style={{ cursor: 'default' }}>
-                            {/* Featured Badge */}
-                            {project.featured && (
-                                <div
-                                    style={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: 6,
-                                        padding: '4px 12px',
-                                        background: 'rgba(245, 158, 11, 0.1)',
-                                        border: '1px solid rgba(245, 158, 11, 0.25)',
-                                        borderRadius: 9999,
-                                        fontSize: 12,
-                                        fontWeight: 600,
-                                        color: '#f59e0b',
-                                        marginBottom: 16,
-                                    }}
-                                >
-                                    <Star size={12} />
-                                    Featured
+                            {/* Card Header (Featured Badge & Links) */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', minHeight: 28, marginBottom: 16 }}>
+                                <div>
+                                    {project.featured && (
+                                        <div
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: 6,
+                                                padding: '4px 12px',
+                                                background: 'rgba(245, 158, 11, 0.1)',
+                                                border: '1px solid rgba(245, 158, 11, 0.25)',
+                                                borderRadius: 9999,
+                                                fontSize: 12,
+                                                fontWeight: 600,
+                                                color: '#f59e0b',
+                                            }}
+                                        >
+                                            <Star size={12} />
+                                            Featured
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+                                <div style={{ display: 'flex', gap: 8 }}>
+                                    {project.github_url && (
+                                        <a
+                                            href={project.github_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-outline"
+                                            style={{ padding: '4px 12px', fontSize: 12 }}
+                                        >
+                                            <Github size={14} />
+                                            Code
+                                        </a>
+                                    )}
+                                    {project.live_url && (
+                                        <a
+                                            href={project.live_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-primary"
+                                            style={{ padding: '4px 12px', fontSize: 12 }}
+                                        >
+                                            <ExternalLink size={14} />
+                                            Live
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
 
                             <h3
                                 style={{
@@ -150,7 +179,7 @@ const Projects = ({ projects }) => {
                             )}
 
                             {/* Tech Stack */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 'auto' }}>
                                 {project.tech_stack.map((tech) => (
                                     <span
                                         key={tech}
@@ -171,34 +200,6 @@ const Projects = ({ projects }) => {
                                         {tech}
                                     </span>
                                 ))}
-                            </div>
-
-                            {/* Links */}
-                            <div style={{ display: 'flex', gap: 12, marginTop: 'auto' }}>
-                                {project.github_url && (
-                                    <a
-                                        href={project.github_url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn-outline"
-                                        style={{ padding: '8px 20px', fontSize: 13 }}
-                                    >
-                                        <Github size={16} />
-                                        Code
-                                    </a>
-                                )}
-                                {project.live_url && (
-                                    <a
-                                        href={project.live_url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn-primary"
-                                        style={{ padding: '8px 20px', fontSize: 13 }}
-                                    >
-                                        <ExternalLink size={16} />
-                                        Live
-                                    </a>
-                                )}
                             </div>
                         </div>
                     ))}
