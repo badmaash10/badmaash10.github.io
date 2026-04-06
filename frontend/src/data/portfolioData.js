@@ -4,8 +4,8 @@
 
 export const profile = {
     name: "Charchit Singh Sahay",
-    title: "Technical Lead & Full Stack Developer",
-    bio: "Technical Lead architecting scalable microservices and multi-tenant SaaS platforms from the ground up. Expert in high-performance API design, cloud integration, and driving technical strategy from MVP to scale at pace.",
+    title: "Associate Product Manager",
+    bio: "Associate Product Manager architecting scalable microservices and multi-tenant SaaS platforms from the ground up. Expert in high-performance API design, cloud integration, and driving technical strategy from MVP to scale at pace.",
     email: "charhitsingh10@gmail.com",
     phone: "8766216568",
     location: "Ghaziabad, Uttar Pradesh, India",
@@ -171,7 +171,7 @@ export const projects = [
 export const experiences = [
     {
         id: "matrica-solutions",
-        title: "Associate Python Developer",
+        title: "Associate Product Manager",
         company: "Matrica Solutions Pvt. Ltd.",
         type: "job",
         description:
